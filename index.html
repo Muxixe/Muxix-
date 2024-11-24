@@ -226,6 +226,113 @@ body::before {
   text-shadow: 0 0 10px var(--accent);
 }
 
+#oraculo {
+  min-height: 100vh; 
+  padding: 6rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('mão.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+#oraculo h2 {
+  color: var(--accent);
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  text-shadow: 0 0 15px rgba(0, 0, 0, 0.9);
+}
+
+#oraculo .subtitle {
+  color: var(--accent);
+  font-size: 2rem;
+  margin: 2rem 0;
+  text-align: center;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
+}
+
+#oraculo p {
+  color: var(--text);
+  font-size: 1.4rem;
+  max-width: 900px;
+  margin: 0 auto;
+  line-height: 2;
+  text-align: center;
+  padding: 2rem;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.oracle-options {
+  margin: 2rem 0;
+  padding: 2rem;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.oracle-option {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  border-bottom: 1px solid var(--accent);
+}
+
+.oracle-option:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.oracle-option h4 {
+  color: var(--accent);
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.oracle-option .price {
+  color: var(--text);
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
+.oracle-option.observation {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(218, 165, 32, 0.3);
+}
+
+.oracle-option.observation p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-top: 0.5rem;
+}
+
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  padding: 1rem 2rem;
+  background: var(--accent);
+  color: var(--primary);
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: all 0.3s;
+  z-index: 1000;
+  cursor: pointer;
+}
+
+.back-to-top:hover {
+  background: var(--text);
+  transform: scale(1.05);
+}
+
 @media (max-width: 768px) {
   .nav-list {
     flex-direction: column;
@@ -249,6 +356,33 @@ body::before {
   .social-message {
     font-size: 1rem;
     margin: 0.5rem 0;
+  }
+  
+  #oraculo h2 {
+    font-size: 2.2rem;
+  }
+  
+  #oraculo .subtitle {
+    font-size: 1.6rem;
+  }
+  
+  #oraculo p {
+    font-size: 1.2rem;
+    padding: 1.5rem;
+  }
+  
+  .back-to-top {
+    bottom: 20px;
+    left: 20px;
+    padding: 0.8rem 1.5rem;
+  }
+
+  .oracle-option h4 {
+    font-size: 1.2rem;
+  }
+  
+  .oracle-option .price {
+    font-size: 1.4rem;
   }
 }
 
@@ -306,6 +440,7 @@ body::before {
   text-shadow: 0 0 10px rgba(218,165,32,0.5);
 }
 
+/* Add new audio control styles */
 .audio-control {
   position: fixed;
   top: 20px;
@@ -347,40 +482,94 @@ body::before {
 </head>
 <body>
 
-<audio id="backgroundAudio" loop>
+<audio id="backgroundAudio" loop="">
   <source src="Aquela Mesa.mp3" type="audio/mp3">
   Your browser does not support the audio element.
 </audio>
 
-<nav class="nav-menu">
-  <ul class="nav-list">
-    <li><a href="#inicio" class="nav-link">Início</a></li>
-    <li><a href="https://produto.mercadolivre.com.br/MLB-5185318278-feitico-do-ventre-demoniaco-101-garantido-_JM" class="nav-link" target="_blank">Ventre Demoníaco</a></li>
-    <li><a href="https://produto.mercadolivre.com.br/MLB-3912025821-vela-de-pedido-as-almas-_JM?variation=182270612892#reco_item_pos=0&reco_backend=same-seller-odin&reco_backend_type=low_level&reco_client=vip-seller_items-above&reco_id=4b88f3b0-136d-4b06-9f69-e952b41827a7&reco_model=machinalis-sellers-baseline" class="nav-link" target="_blank">Vela de Pedido as Almas</a></li>
-    <li><a href="https://produto.mercadolivre.com.br/MLB-5184507996-vela-preta-anti-demanda-_JM?variation=186110608173#reco_item_pos=1&reco_backend=same-seller-odin&reco_backend_type=low_level&reco_client=vip-seller_items-above&reco_id=8f846d5b-a259-4878-a2a8-518a5e321b97&reco_model=machinalis-sellers-baseline" class="nav-link" target="_blank">Vela Preta Anti Demanda</a></li>
-    <li class="dynamic-products"></li>
-  </ul>
-</nav>
-
 <div class="audio-control">
   <button id="audioToggle" class="audio-btn">
     <svg class="audio-icon" viewBox="0 0 24 24" width="24" height="24">
-      <path class="sound-on" d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
-      <path class="sound-off" d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z" style="display:none"/>
+      <path class="sound-on" d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"></path>
+      <path class="sound-off" d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z" style="display:none"></path>
     </svg>
   </button>
 </div>
+
+<nav class="nav-menu">
+  <ul class="nav-list">
+    <li><a href="#inicio" class="nav-link">Início</a></li>
+    <li><a href="https://www.tiktok.com/@muxixe/video/7438371918413040951" class="nav-link" target="_blank">Inicie na Kimbanda</a></li>
+    <li><a href="https://produto.mercadolivre.com.br/MLB-5185318278-feitico-do-ventre-demoniaco-101-garantido-_JM" class="nav-link" target="_blank">Ventre Demoníaco</a></li>
+    <li><a href="https://produto.mercadolivre.com.br/MLB-3912025821-vela-de-pedido-as-almas-_JM?variation=182270612892#reco_item_pos=0&amp;reco_backend=same-seller-odin&amp;reco_backend_type=low_level&amp;reco_client=vip-seller_items-above&amp;reco_id=4b88f3b0-136d-4b06-9f69-e952b41827a7&amp;reco_model=machinalis-sellers-baseline" class="nav-link" target="_blank">Vela de Pedido as Almas</a></li>
+    <li><a href="https://produto.mercadolivre.com.br/MLB-5184507996-vela-preta-anti-demanda-_JM?variation=186110608173#reco_item_pos=1&amp;reco_backend=same-seller-odin&amp;reco_backend_type=low_level&amp;reco_client=vip-seller_items-above&amp;reco_id=8f846d5b-a259-4878-a2a8-518a5e321b97&amp;reco_model=machinalis-sellers-baseline" class="nav-link" target="_blank">Vela Preta Anti Demanda</a></li>
+    <li class="dynamic-products"></li>
+  </ul>
+</nav>
 
 <header id="inicio" class="header">
   <h1 class="logo">Tata Nganga Muxixé</h1>
   <h2 class="subsubtitle">Kimbanda dos 7 que Vira</h2>
   <p class="social-message">Siga-me nas principais redes sociais! ↘️</p>
-  <p class="subtitle">Magista e Coaching Espiritual</p>
+  <p class="subtitle">
+    <a href="#oraculo" style="color: inherit; text-decoration: none; cursor: pointer;">Oráculo de Esu (Clique aqui e saiba mais)</a>
+  </p>
   <div class="contact-info">
     <p><a href="mailto:mesquita.tulio@gmail.com" style="color: inherit; text-decoration: none;">Email: mesquita.tulio@gmail.com</a></p>
     <p><a href="https://wa.me/5561991687556" target="_blank" style="color: inherit; text-decoration: none;">Contato Whatsapp: (61)99168-7556</a></p>
   </div>
 </header>
+
+<section id="oraculo">
+  <h2>Oráculo de Esu</h2>
+  <h3 class="subtitle">Descubra Seu DNA Espiritual</h3>
+  <p>
+    Essa ferramenta ancestral te levará a conhecer toda sua energia espiritual através da Odulogia (Estudo dos Odus) que mostram o porquê das suas bençãos e maldições que compõem seu "DNA Espiritual". Através desta antiga sabedoria, você poderá compreender os caminhos e influências que regem sua vida espiritual, encontrando equilíbrio e direção em sua jornada pessoal.
+  </p>
+  <h3 class="subtitle">A Sabedoria dos Odus</h3>
+  <p>
+    Os Odus são os caminhos sagrados que revelam as energias e forças que influenciam cada aspecto de nossa existência. Através deles, podemos entender nossos desafios, potenciais e destino espiritual.
+  </p>
+  <h3 class="subtitle">Modalidades de Jogo</h3>
+  <div class="oracle-options">
+    <div class="oracle-option">
+      <h4>Jogo completo com análise de Odulogia</h4>
+      <p class="price">R$ 200,00</p>
+    </div>
+    <div class="oracle-option">
+      <h4>Jogo específico para um questionamento sem Odulogia</h4>
+      <p class="price">R$ 100,00</p>
+    </div>
+    <div class="oracle-option observation">
+      <h4>Observação</h4>
+      <p style="color: var(--text);">Um questionamento é por exemplo saber quem são meus guardiões, se tenho caminhos pra um trabalho, se o problema de saúde é espiritual etc...</p>
+    </div>
+  </div>
+  <a href="#inicio" class="back-to-top">Voltar ao Início</a>
+</section>
+
+<section id="velas" class="products-section">
+  <div class="product-card">
+    <div class="product-image">
+      <svg width="100" height="100" viewBox="0 0 100 100">
+        <path d="M50 10 L60 90 L40 90 Z" fill="none" stroke="#daa520" stroke-width="2"></path>
+        <circle cx="50" cy="30" r="10" fill="#daa520" filter="url(#glow)"></circle>
+        <defs>
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="2" result="coloredBlur"></feGaussianBlur>
+            <feMerge>
+              <feMergeNode in="coloredBlur"></feMergeNode>
+              <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+          </filter>
+        </defs>
+      </svg>
+    </div>
+    <h2 class="product-title">Vela de Proteção</h2>
+    <p class="product-price">R$ 49,90</p>
+    <p class="product-description">Vela feita com ingredientes sagrados para proteção espiritual.</p>
+  </div>
+</section>
 
 <section id="amuletos" class="products-section">
   <div class="product-card">
@@ -436,12 +625,10 @@ document.querySelectorAll('.nav-link').forEach(link => {
   link.addEventListener('click', function(e) {
     const href = this.getAttribute('href');
     
-    // If it's an external link (starts with http), let it behave normally
     if (href.startsWith('http')) {
-      return; // Allow default behavior for external links
+      return; 
     }
     
-    // For internal links
     e.preventDefault();
     
     const targetId = href.substring(1);
@@ -542,7 +729,7 @@ function openProductWindow(productData) {
         .back-btn {
           position: fixed;
           top: 20px;
-          right: 20px; /* Changed from left to right */
+          right: 20px; 
           display: inline-block;
           background: #daa520;
           color: #2c1810;
@@ -594,14 +781,12 @@ function openProductWindow(productData) {
 
 // Load existing products on page load
 document.addEventListener('DOMContentLoaded', () => {
-  // Initialize products as an empty array if localStorage is empty
   let products = [];
   try {
     const storedProducts = localStorage.getItem('products');
     if (storedProducts) {
       products = JSON.parse(storedProducts);
     }
-    // Verify products is an array
     if (!Array.isArray(products)) {
       products = [];
     }
@@ -610,7 +795,6 @@ document.addEventListener('DOMContentLoaded', () => {
     products = [];
   }
 
-  // Add product links only if we have products
   if (products && products.length > 0) {
     products.forEach(productData => {
       const navLink = document.createElement('li');
@@ -632,15 +816,13 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// Audio control functionality
+// Add audio control functionality
 document.addEventListener('DOMContentLoaded', function() {
   const audio = document.getElementById('backgroundAudio');
   const audioToggle = document.getElementById('audioToggle');
   
-  // Change volume from 0.2 to 0.15
   audio.volume = 0.15;
   
-  // Function to toggle audio
   function toggleAudio() {
     if (audio.paused) {
       audio.play();
@@ -651,10 +833,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
   
-  // Add click event listener to toggle button
   audioToggle.addEventListener('click', toggleAudio);
   
-  // Start playing audio when user interacts with the page
   document.addEventListener('click', function() {
     if (audio.paused) {
       audio.play().catch(function(error) {
@@ -662,6 +842,22 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     }
   }, { once: true });
+});
+
+// Smooth scroll to Oráculo section
+document.querySelector('.subtitle a').addEventListener('click', function(e) {
+  e.preventDefault();
+  const oraculoSection = document.getElementById('oraculo');
+  oraculoSection.scrollIntoView({ behavior: 'smooth' });
+});
+
+// Back to top functionality
+document.querySelector('.back-to-top').addEventListener('click', function(e) {
+  e.preventDefault();
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
 });
 </script>
 
